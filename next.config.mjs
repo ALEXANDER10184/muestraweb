@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
+    basePath: '/Muestraweb',
+    trailingSlash: true,
     images: {
         unoptimized: true,
         remotePatterns: [
@@ -10,9 +12,6 @@ const nextConfig = {
             },
         ],
     },
-    // Si tu repositorio NO es username.github.io, descomenta y ajusta el basePath
-    // basePath: '/nombre-del-repositorio',
-    // trailingSlash: true,
 };
 
 export default nextConfig;
