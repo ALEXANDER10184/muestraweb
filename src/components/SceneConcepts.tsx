@@ -3,9 +3,10 @@ import { motion, useTransform, MotionValue } from "framer-motion";
 import { StickyScene } from "./StickyScene";
 import { GlassCard } from "./GlassCard";
 import Image from "next/image";
-import { Brain, Network, Zap, Target, Cpu, Workflow } from "lucide-react";
+import { Brain, Network, Zap, Target, Cpu } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
-const conceptIcons: Record<string, any> = {
+const conceptIcons: Record<string, LucideIcon> = {
     "Memoria": Brain,
     "Contexto": Network,
     "Señales": Zap,
@@ -28,7 +29,7 @@ const ConceptCard = ({
     progress: MotionValue<number>;
     speed: number;
     desc?: string;
-    icon?: any;
+    icon?: LucideIcon;
 }) => {
     const translateY = useTransform(progress, [0, 1], [0, -100 * speed]);
     const opacity = useTransform(progress, [0, 0.05, 0.9, 1], [0, 1, 1, 0]);
