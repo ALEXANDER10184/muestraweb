@@ -1,17 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-    basePath: '/muestraweb',
-    trailingSlash: true,
-    images: {
-        unoptimized: true,
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'images.unsplash.com',
-            },
-        ],
-    },
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  basePath: '/muestraweb',
+  assetPrefix: '/muestraweb/',
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

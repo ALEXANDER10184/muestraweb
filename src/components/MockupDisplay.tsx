@@ -20,11 +20,7 @@ const PhoneFrame = ({ children, className }: { children: React.ReactNode; classN
     </div>
 );
 
-const FloatingCard = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-    <div className={cn("absolute rounded-xl border border-white/10 bg-zinc-900/80 backdrop-blur-xl shadow-2xl p-3", className)}>
-        {children}
-    </div>
-);
+// FloatingCard reservado para futuros usos
 
 const HeaderMock = () => (
     <div className="flex items-center justify-between border-b border-white/5 p-4 mt-6">
@@ -127,7 +123,7 @@ const TriadicComposition = ({ type }: { type: string }) => {
 
 // --- Micro Cases Views (Scene 4) ---
 
-const MicroCaseComposition = ({ type }: { type: string }) => {
+const MicroCaseComposition = ({ }: { type?: string }) => {
     return (
         <div className="relative h-full w-full flex items-center justify-center gap-4 md:gap-8">
             <PhoneFrame className="h-[280px] w-[160px] md:h-[400px] md:w-[240px] -rotate-2">
@@ -641,7 +637,7 @@ const ContentRenderer = ({ type }: { type: string }) => {
     if (type.startsWith('grid_')) return <GridList />;
 
     if (type.endsWith('_triad')) return <TriadicComposition type={type} />;
-    if (type.startsWith('micro_')) return <MicroCaseComposition type={type} />;
+    if (type.startsWith('micro_')) return <MicroCaseComposition />;
 
     switch (type) {
         // Scalability

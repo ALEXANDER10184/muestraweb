@@ -3,7 +3,7 @@ import { motion, useTransform, MotionValue } from "framer-motion";
 import { StickyScene } from "./StickyScene";
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
-import { Code, Cpu, Workflow } from "lucide-react";
+import { Cpu, Workflow } from "lucide-react";
 
 const AuthorityVisual = ({ type }: { type: string }) => {
     switch (type) {
@@ -97,8 +97,7 @@ const AuthorityContent = ({ progress }: { progress: MotionValue<number> }) => {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90" />
             </motion.div>
 
-            {/* @ts-ignore - mismatch in simpler type definition vs updated siteConfig, ignoring strictly for demo speed */}
-            {phrases.map((phrase: any, i: number) => (
+            {phrases.map((phrase, i: number) => (
                 <Phrase
                     key={i}
                     item={phrase}

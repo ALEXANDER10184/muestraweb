@@ -19,8 +19,8 @@ const SectorItem = ({ item }: { item: typeof siteConfig.sectorCarousel[0] }) => 
             <div className="flex-1 flex items-center justify-start gap-4 overflow-hidden mask-fade-right">
                 {/* Visual representation of multiple screens in a row */}
                 <div className="flex gap-4 h-full py-2">
-                    {item.screens.map((s, i) => (
-                        <div key={i} className="h-full aspect-[9/16] rounded-xl border border-white/10 bg-black/40 overflow-hidden relative shadow-lg group">
+                    {item.screens.map((s) => (
+                        <div key={s} className="h-full aspect-[9/16] rounded-xl border border-white/10 bg-black/40 overflow-hidden relative shadow-lg group">
                             {/* Visual Component */}
                             <div className="absolute inset-0">
                                 <MockupDisplay
