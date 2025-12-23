@@ -45,7 +45,7 @@ export const Hero = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     className="mb-8"
                 >
                     <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-widest text-white/50 backdrop-blur-md">
@@ -57,7 +57,7 @@ export const Hero = () => {
                     className="max-w-4xl text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                 >
                     {siteConfig.headline.split('\n').map((line, i) => (
                         <span key={i} className="block">{line}</span>
@@ -65,10 +65,10 @@ export const Hero = () => {
                 </motion.h1>
 
                 <motion.p
-                    className="mt-8 max-w-2xl text-lg text-white/60 md:text-xl"
+                    className="mt-8 max-w-2xl text-lg text-gray-200 md:text-white/60 md:text-xl"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.6 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
                 >
                     {siteConfig.subheadline}
                 </motion.p>
@@ -76,17 +76,17 @@ export const Hero = () => {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-12 flex flex-col items-center gap-2"
+                className="absolute bottom-20 md:bottom-12 flex flex-col items-center gap-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 1 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
             >
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/30">Scroll</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-white/70 md:text-white/30">Descubre</span>
                 <motion.div
-                    animate={{ y: [0, 5, 0] }}
+                    animate={{ y: [0, 8, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                    <ChevronDown className="h-4 w-4 text-white/30" />
+                    <ChevronDown className="h-6 w-6 text-white/80 md:text-white/30" />
                 </motion.div>
             </motion.div>
         </section>

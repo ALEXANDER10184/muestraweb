@@ -15,7 +15,7 @@ export const SceneWorkbench = () => {
     const scale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
 
     return (
-        <section ref={containerRef} className="relative min-h-[150vh] flex items-center justify-center overflow-hidden py-24">
+        <section ref={containerRef} className="relative min-h-[120vh] flex items-center justify-center overflow-hidden py-24">
             {/* Background Tech Grid */}
             <div className="absolute inset-0 z-0 opacity-20">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -27,13 +27,13 @@ export const SceneWorkbench = () => {
                 <div className="text-center mb-16 space-y-6 max-w-3xl">
                     <motion.h2
                         style={{ opacity, y: useTransform(scrollYProgress, [0, 0.3], [50, 0]) }}
-                        className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-white/50"
+                        className="text-4xl md:text-6xl font-bold text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]"
                     >
                         {siteConfig.workbench.title}
                     </motion.h2>
                     <motion.div
                         style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4], [0, 1]) }}
-                        className="flex flex-col gap-2 text-lg text-white/60"
+                        className="flex flex-col gap-2 text-lg text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]"
                     >
                         {siteConfig.workbench.subtitles.map((t, i) => (
                             <span key={i}>{t}</span>

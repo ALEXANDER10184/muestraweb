@@ -69,7 +69,7 @@ const Phrase = ({
             className="absolute flex flex-col items-center justify-center max-w-4xl px-6 text-center"
         >
             <AuthorityVisual type={item.visual} />
-            <h2 className="text-3xl font-bold leading-tight tracking-tight md:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60">
+            <h2 className="text-3xl font-bold leading-tight tracking-tight md:text-6xl text-white drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">
                 {item.text}
             </h2>
         </motion.div>
@@ -94,7 +94,7 @@ const AuthorityContent = ({ progress }: { progress: MotionValue<number> }) => {
                     className="object-cover"
                     quality={80}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
             </motion.div>
 
             {phrases.map((phrase, i: number) => (
@@ -112,7 +112,7 @@ const AuthorityContent = ({ progress }: { progress: MotionValue<number> }) => {
 
 export const SceneAuthority = () => {
     return (
-        <StickyScene height="h-[300vh]">
+        <StickyScene height="h-[220vh]">
             {({ scrollYProgress }) => <AuthorityContent progress={scrollYProgress} />}
         </StickyScene>
     );

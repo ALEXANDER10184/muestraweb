@@ -47,17 +47,17 @@ export const SceneCarousel = () => {
         target: targetRef,
     });
 
-    // Horizontal scroll calculation
-    // We want to scroll a width proportional to the number of items
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+    // Desplazamiento horizontal: avanzamos lo suficiente para que las 8 tarjetas pasen por pantalla
+    // Mantenemos el mismo recorrido, pero reducimos algo la altura total de la escena
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-550%"]);
 
     return (
         <section ref={targetRef} className="relative h-[400vh] bg-zinc-950/50">
-            <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+            <div className="sticky top-28 md:top-0 flex h-screen items-center overflow-hidden">
                 <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
 
                 <motion.div style={{ x }} className="flex gap-8 px-[10vw]">
-                    {siteConfig.sectorCarousel.map((item, i) => (
+                    {siteConfig.sectorCarousel.map((item) => (
                         <SectorItem key={item.id} item={item} />
                     ))}
                     {/* Extra padding/slide at end */}

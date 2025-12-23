@@ -43,15 +43,30 @@ export const SceneCTA = () => {
                     <div className="space-y-4">
                         <CTAButton href={siteConfig.whatsappUrl} text={siteConfig.ctaText.button} className="bg-white text-black hover:bg-cyan-50" />
 
-                        <p className="text-sm text-white/40 font-light tracking-wide">
+                        <p className="text-sm text-white/70 font-light tracking-wide">
                             {siteConfig.ctaText.trust}
                         </p>
                     </div>
                 </div>
             </motion.div>
 
-            <footer className="absolute bottom-6 text-xs text-white/20">
-                © {new Date().getFullYear()} {siteConfig.brandName}. All rights reserved.
+            <footer className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-2 text-xs text-white/40">
+                <div className="flex flex-col items-center gap-1">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1, duration: 1 }}
+                        className="flex items-center gap-2"
+                    >
+                        <span className="font-light tracking-wider">Alexander Acero</span>
+                        <span className="text-white/20">·</span>
+                        <span className="text-white/30 font-mono text-[10px] uppercase tracking-widest">Programador</span>
+                    </motion.div>
+                </div>
+                <div className="text-white/20">
+                    © {new Date().getFullYear()} {siteConfig.brandName}
+                </div>
             </footer>
         </section>
     );

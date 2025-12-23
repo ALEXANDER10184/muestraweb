@@ -107,7 +107,7 @@ const Content = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) 
 
 export const SceneStates = () => {
     return (
-        <StickyScene height="h-[300vh]" className="bg-black/20">
+        <StickyScene height="h-[240vh]" className="bg-black/20">
             {({ scrollYProgress }) => <Content scrollYProgress={scrollYProgress} />}
         </StickyScene>
     );
