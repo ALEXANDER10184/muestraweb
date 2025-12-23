@@ -1,6 +1,6 @@
 export const siteConfig = {
     brandName: "MINIAPPS",
-    whatsappUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/34600000000",
+    whatsappUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/34642868261",
     headline: "Sistemas pequeños.\nDecisiones inteligentes.",
     subheadline: "Miniapps que convierten procesos en automatización.",
     seo: {
