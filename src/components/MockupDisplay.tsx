@@ -619,7 +619,129 @@ const GridTicket = () => (
     </div>
 );
 
-// --- Realistic Triadic Views (Inventory & CRM) ---
+const GridFitness = () => (
+    // Rutina Gym: Workout Tracker (High Energy)
+    <div className="w-full h-full bg-zinc-950 p-3 flex flex-col font-sans">
+        <div className="flex justify-between items-center mb-3 pb-2 border-b border-white/5">
+            <div>
+                <div className="text-[8px] text-zinc-500 uppercase font-bold tracking-widest">Rutina</div>
+                <div className="text-[10px] text-white font-bold uppercase italic">Push Day</div>
+            </div>
+            <div className="text-[12px] font-bold text-lime-400">45:00</div>
+        </div>
+        <div className="space-y-2">
+            {[
+                { name: "Bench Press", sets: "4x8", weight: "80kg", done: true },
+                { name: "Incline DB", sets: "3x10", weight: "32kg", done: true },
+                { name: "Lat Raise", sets: "3x15", weight: "12kg", done: false },
+                { name: "Triceps Ext", sets: "3x12", weight: "25kg", done: false },
+            ].map((ex, i) => (
+                <div key={i} className={`p-2 rounded-lg border ${ex.done ? 'bg-lime-500/10 border-lime-500/20' : 'bg-zinc-900 border-white/5'} flex justify-between items-center`}>
+                    <div>
+                        <div className={`text-[9px] font-bold ${ex.done ? 'text-white' : 'text-zinc-400'}`}>{ex.name}</div>
+                        <div className="text-[8px] text-zinc-600 font-mono">{ex.sets} • {ex.weight}</div>
+                    </div>
+                    {ex.done && <div className="w-3 h-3 rounded-full bg-lime-500 flex items-center justify-center text-black text-[8px] font-bold">✓</div>}
+                </div>
+            ))}
+        </div>
+        <div className="mt-auto pt-2">
+            <div className="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
+                <div className="h-full w-[50%] bg-lime-500" />
+            </div>
+        </div>
+    </div>
+);
+
+const GridHotel = () => (
+    // Hotel: Room Management (Elegant)
+    <div className="w-full h-full bg-[#1c1c1e] p-0 flex flex-col font-sans relative overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#bfa094]/10 to-transparent" />
+        <div className="p-4 z-10">
+            <div className="text-[8px] text-[#bfa094] uppercase tracking-[0.2em] mb-1">Guest</div>
+            <div className="text-xl font-serif text-white italic tracking-wide">Mr. Wick</div>
+        </div>
+        <div className="flex-1 bg-zinc-950/50 backdrop-blur-sm m-2 mt-0 rounded-xl border border-white/5 p-3 flex flex-col gap-3">
+            <div className="flex justify-between items-center">
+                <div className="flex flex-col">
+                    <span className="text-[8px] text-zinc-500 uppercase">Room</span>
+                    <span className="text-2xl font-light text-white">804</span>
+                </div>
+                <div className="px-2 py-1 bg-[#bfa094]/20 border border-[#bfa094]/30 rounded text-[8px] text-[#bfa094] uppercase tracking-wider">
+                    Occupied
+                </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2 mt-2">
+                <div className="p-2 bg-white/5 rounded-lg text-center">
+                    <div className="text-[8px] text-zinc-500 uppercase">Check In</div>
+                    <div className="text-[10px] text-zinc-300 font-mono">14:00</div>
+                </div>
+                <div className="p-2 bg-white/5 rounded-lg text-center">
+                    <div className="text-[8px] text-zinc-500 uppercase">Check Out</div>
+                    <div className="text-[10px] text-zinc-300 font-mono">12:00</div>
+                </div>
+            </div>
+        </div>
+        <div className="p-4 pt-0">
+            <div className="flex items-center gap-2 p-2 rounded-lg bg-green-900/10 border border-green-500/10">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                <span className="text-[8px] text-green-300 uppercase tracking-wider">Room Cleaned</span>
+            </div>
+        </div>
+    </div>
+);
+
+const GridTattoo = () => (
+    // Tattoo: Session Info (Dark/Ink)
+    <div className="w-full h-full bg-black p-3 flex flex-col font-sans border-l-4 border-zinc-800">
+        <div className="flex justify-between items-start mb-4">
+            <div>
+                <div className="text-[8px] text-zinc-500 uppercase tracking-widest">Client</div>
+                <div className="text-[11px] font-bold text-white">Roberto G.</div>
+            </div>
+            <div className="text-[10px] text-zinc-400 font-mono">15:30</div>
+        </div>
+        <div className="flex-1 bg-zinc-900 rounded-lg p-2 border border-zinc-800 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-20 transition-opacity" />
+            <div className="relative z-10 h-full flex flex-col justify-end">
+                <span className="text-[8px] text-white/60 bg-black/50 px-1 rounded w-fit backdrop-blur-sm">Ref. Dragon Sleeve</span>
+            </div>
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-2">
+            <div>
+                <div className="text-[7px] text-zinc-600 uppercase">Session</div>
+                <div className="text-[9px] text-zinc-300">2 of 5</div>
+            </div>
+            <div>
+                <div className="text-[7px] text-zinc-600 uppercase">Payment</div>
+                <div className="text-[9px] text-yellow-500 font-mono">Pending</div>
+            </div>
+        </div>
+    </div>
+);
+
+const SimpleCalendar = () => (
+    // Pistas/Reservas: Simple Grid
+    <div className="w-full h-full bg-zinc-950 p-2 flex flex-col">
+        <div className="flex justify-between items-center mb-2 px-1">
+            <span className="text-[9px] text-white/50 uppercase">Pista 1</span>
+            <span className="text-[8px] px-1.5 py-0.5 bg-blue-500/20 text-blue-300 rounded border border-blue-500/20">Padel</span>
+        </div>
+        <div className="flex-1 grid grid-cols-2 gap-1.5">
+            {[
+                { t: "09:00", s: "occupied" }, { t: "10:30", s: "occupied" },
+                { t: "12:00", s: "free" }, { t: "13:30", s: "occupied" },
+                { t: "17:00", s: "free" }, { t: "18:30", s: "free" },
+                { t: "20:00", s: "occupied" }, { t: "21:30", s: "occupied" },
+            ].map((slot, i) => (
+                <div key={i} className={`rounded flex flex-col items-center justify-center border ${slot.s === 'free' ? 'bg-zinc-900 border-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 cursor-pointer' : 'bg-zinc-800/50 border-white/5 opacity-50'}`}>
+                    <span className={`text-[9px] font-mono ${slot.s === 'free' ? 'text-white' : 'text-white/30'}`}>{slot.t}</span>
+                    {slot.s === 'free' && <span className="text-[7px] text-emerald-400">LIBRE</span>}
+                </div>
+            ))}
+        </div>
+    </div>
+);
 
 const InventoryRealism = () => (
     <div className="relative h-full w-full flex items-center justify-center p-2 md:p-4 perspective-[2000px]">
@@ -858,15 +980,21 @@ const CRMRealism = () => (
 
 const ContentRenderer = ({ type }: { type: string }) => {
     // Grid Visuals (& Aliases for Carousel/Config)
-    if (type === 'grid_calendar' || type === 'calendar' || type === 'time_track' || type === 'grid_calendar_simple' || type === 'class_schedule' || type === 'visit_calendar') return <GridCalendar />;
-    if (type === 'grid_menu' || type === 'menu' || type === 'grid_checkin' || type === 'pos_daily') return <GridMenu />;
-    if (type === 'grid_profile' || type === 'client_profile' || type === 'patient_list' || type === 'client_portal' || type === 'grid_tattoo' || type === 'client_history' || type === 'member_checkin') return <GridProfile />;
+    if (type === 'grid_calendar' || type === 'calendar' || type === 'time_track' || type === 'class_schedule' || type === 'visit_calendar') return <GridCalendar />;
+    if (type === 'grid_menu' || type === 'menu' || type === 'pos_daily') return <GridMenu />;
+    if (type === 'grid_profile' || type === 'client_profile' || type === 'patient_list' || type === 'client_portal' || type === 'client_history') return <GridProfile />;
     if (type === 'grid_chart' || type === 'metrics' || type === 'payment' || type === 'payment_status' || type === 'commission_calc') return <GridChart />;
     if (type === 'grid_stock' || type === 'stock_check' || type === 'inventory_alert') return <GridStock />;
-    if (type === 'grid_list' || type === 'treatments' || type === 'docs' || type === 'secure_chat' || type === 'kanban' || type === 'grid_fitness' || type === 'delivery_list' || type === 'property_list' || type === 'lead_kanban' || type === 'workout_plan') return <GridList />;
+    if (type === 'grid_list' || type === 'treatments' || type === 'docs' || type === 'secure_chat' || type === 'kanban' || type === 'delivery_list' || type === 'property_list' || type === 'lead_kanban') return <GridList />;
     if (type === 'grid_map' || type === 'fleet_map' || type === 'fuel_track') return <GridMap />;
     if (type === 'grid_shipping' || type === 'shipping_status') return <GridShippingStatus />;
-    if (type === 'grid_ticket' || type === 'orders' || type === 'kitchen' || type === 'reminders' || type === 'invoice' || type === 'grid_fitness' || type === 'incident_report') return <GridTicket />;
+    if (type === 'grid_ticket' || type === 'orders' || type === 'kitchen' || type === 'reminders' || type === 'invoice' || type === 'incident_report') return <GridTicket />;
+
+    // New specific mappings
+    if (type === 'grid_fitness' || type === 'workout_plan') return <GridFitness />;
+    if (type === 'grid_checkin' || type === 'member_checkin') return <GridHotel />;
+    if (type === 'grid_tattoo') return <GridTattoo />;
+    if (type === 'grid_calendar_simple' || type === 'reservations') return <SimpleCalendar />;
 
     // Realistic Triadic Overrides
     if (type === 'inventory_triad' || type === 'stock_realism' || type === 'inventory_deep') return <InventoryRealism />;
