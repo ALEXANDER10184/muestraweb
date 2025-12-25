@@ -12,8 +12,8 @@ export const siteConfig = {
     gridItems: [
         { title: "Agenda Barbería", type: "grid_calendar" },
         { title: "Pedidos Bar", type: "grid_menu" },
-        { title: "Citas Clínica", type: "grid_profile" },
-        { title: "Control de Stock", type: "grid_stock" },
+        { title: "Citas Clínica", type: "client_realism" },
+        { title: "Control de Stock", type: "stock_realism" },
         { title: "Panel Ventas", type: "grid_chart" },
         { title: "Leads Inmobiliaria", type: "grid_list" },
         { title: "Reservas Pista", type: "grid_calendar_simple" },
@@ -36,7 +36,7 @@ export const siteConfig = {
             id: "beauty",
             title: "Belleza y Estética",
             description: "Citas, historiales y pagos ordenados.",
-            screens: ["calendar", "client_profile", "treatments", "reminders"]
+            screens: ["calendar", "client_realism", "treatments", "reminders"]
         },
         {
             id: "health",
@@ -54,7 +54,7 @@ export const siteConfig = {
             id: "retail",
             title: "Retail y Comercio",
             description: "Stock, caja y clientes en tiempo real.",
-            screens: ["stock_check", "pos_daily", "inventory_alert", "client_history"]
+            screens: ["stock_realism", "pos_daily", "inventory_alert", "client_history"]
         },
         {
             id: "logistics",

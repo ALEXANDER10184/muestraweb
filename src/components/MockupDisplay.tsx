@@ -619,6 +619,241 @@ const GridTicket = () => (
     </div>
 );
 
+// --- Realistic Triadic Views (Inventory & CRM) ---
+
+const InventoryRealism = () => (
+    <div className="relative h-full w-full flex items-center justify-center p-2 md:p-4 perspective-[2000px]">
+        {/* 1. Main Dashboard (Back/Center) */}
+        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[90%] md:w-[600px] h-[300px] md:h-[400px] bg-zinc-900 rounded-2xl border border-white/10 shadow-2xl z-0 transform -rotate-1 opacity-90 scale-95 flex flex-col overflow-hidden">
+            {/* Header */}
+            <div className="h-10 border-b border-white/5 flex items-center justify-between px-4 bg-black/40">
+                <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
+                </div>
+                <div className="text-[10px] text-white/40 font-mono">STOCK MANAGEMENT V2.4</div>
+            </div>
+            {/* Body */}
+            <div className="flex-1 p-4 grid grid-cols-4 gap-4">
+                {/* Sidebar */}
+                <div className="col-span-1 space-y-2 border-r border-white/5 pr-2">
+                    <div className="h-6 bg-emerald-500/20 border border-emerald-500/30 rounded flex items-center px-2 text-[9px] text-emerald-400 font-bold">INVENTORY</div>
+                    <div className="h-6 hover:bg-white/5 rounded flex items-center px-2 text-[9px] text-white/40">ORDERS</div>
+                    <div className="h-6 hover:bg-white/5 rounded flex items-center px-2 text-[9px] text-white/40">SUPPLIERS</div>
+                </div>
+                {/* Table */}
+                <div className="col-span-3 space-y-2">
+                    <div className="grid grid-cols-4 gap-2 text-[8px] text-white/30 uppercase tracking-widest pb-1 border-b border-white/5">
+                        <span className="col-span-2">Product</span>
+                        <span className="text-right">Stock</span>
+                        <span className="text-right">Status</span>
+                    </div>
+                    {[
+                        { name: "Pro Keratin Shampoo 500ml", stock: "124", status: "OK", color: "text-emerald-400" },
+                        { name: "Matte Clay Pomade", stock: "12", status: "LOW", color: "text-orange-400" },
+                        { name: "Beard Oil Sandalwood", stock: "45", status: "OK", color: "text-emerald-400" },
+                        { name: "Razor Blades Pro (100x)", stock: "0", status: "OUT", color: "text-red-400" },
+                        { name: "Aftershave Cooling Gel", stock: "32", status: "OK", color: "text-emerald-400" },
+                    ].map((item, i) => (
+                        <div key={i} className="grid grid-cols-4 gap-2 items-center p-1 hover:bg-white/5 rounded transition-colors group">
+                            <div className="col-span-2 flex items-center gap-2">
+                                <div className="w-4 h-4 rounded bg-white/10" />
+                                <span className="text-[9px] text-white font-medium truncate">{item.name}</span>
+                            </div>
+                            <span className="text-[9px] text-white/60 text-right font-mono">{item.stock}</span>
+                            <span className={`text-[8px] font-bold text-right ${item.color}`}>{item.status}</span>
+                        </div>
+                    ))}
+                    {/* Graph */}
+                    <div className="mt-4 h-24 bg-zinc-900/50 rounded border border-white/5 relative overflow-hidden flex items-end justify-between px-2 pb-2">
+                        {[40, 65, 45, 80, 55, 90, 70, 60, 50, 75].map((h, i) => (
+                            <div key={i} className="w-[8%] bg-indigo-500/20 hover:bg-indigo-500/40 transition-colors rounded-t-sm" style={{ height: `${h}%` }} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* 2. Mobile Scanner (Left) */}
+        <PhoneFrame className="absolute left-[5%] md:left-[10%] top-[20%] h-[300px] md:h-[400px] w-[180px] md:w-[240px] z-10 -rotate-3 hover:scale-105 transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-black">
+            <div className="relative h-full w-full flex flex-col">
+                {/* Camera View Finder UI */}
+                <div className="absolute inset-0 z-0 opacity-50 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
+                <div className="relative z-10 flex-1 flex flex-col items-center justify-center p-6">
+                    <div className="w-48 h-32 border-2 border-white/40 rounded-lg relative">
+                        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-emerald-500" />
+                        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-emerald-500" />
+                        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-emerald-500" />
+                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-emerald-500" />
+                        <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-red-500/50 animate-pulse" />
+                    </div>
+                    <div className="mt-4 px-3 py-1 bg-black/60 backdrop-blur rounded-full border border-white/10 text-[9px] text-white">
+                        Scanning Product...
+                    </div>
+                </div>
+                {/* Bottom Sheet */}
+                <div className="bg-zinc-900 border-t border-white/10 p-4 rounded-t-2xl z-20">
+                    <div className="flex gap-3 mb-3">
+                        <div className="w-10 h-10 rounded bg-white/10" />
+                        <div className="flex-1">
+                            <div className="text-[10px] text-white font-bold">Matte Clay Pomade</div>
+                            <div className="text-[9px] text-white/50">ID: #89212 • Aisle 4</div>
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <div className="text-[14px] font-bold text-white">12 <span className="text-[9px] text-zinc-400 font-normal">in stock</span></div>
+                        <div className="px-2 py-1 bg-emerald-500 text-black text-[9px] font-bold rounded">+ Add Stock</div>
+                    </div>
+                </div>
+            </div>
+        </PhoneFrame>
+
+        {/* 3. Notification/Alert (Right) */}
+        <div className="absolute right-[5%] md:right-[15%] top-[15%] w-[160px] md:w-[200px] z-20 rotate-6 hover:translate-y-[-5px] transition-transform duration-500">
+            <div className="bg-zinc-900/90 backdrop-blur-xl border border-white/10 p-3 rounded-2xl shadow-2xl">
+                <div className="flex items-center gap-2 mb-2">
+                    <div className="h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center border border-red-500/30">
+                        <svg className="w-3 h-3 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                    </div>
+                    <span className="text-[10px] font-bold text-white">Stock Alert</span>
+                </div>
+                <div className="space-y-2">
+                    <div className="p-2 bg-red-500/10 border border-red-500/10 rounded-lg">
+                        <div className="text-[9px] font-semibold text-white">Razor Blades Pro</div>
+                        <div className="text-[8px] text-red-300 mt-0.5">Stock reached 0 units</div>
+                    </div>
+                    <div className="p-2 bg-orange-500/10 border border-orange-500/10 rounded-lg opacity-60">
+                        <div className="text-[9px] font-semibold text-white">Matte Clay Pomade</div>
+                        <div className="text-[8px] text-orange-300 mt-0.5">Below threshold (15)</div>
+                    </div>
+                    <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden mt-1">
+                        <div className="w-[85%] h-full bg-red-500" />
+                    </div>
+                </div>
+            </div>
+            {/* Additional context card behind */}
+            <div className="absolute -z-10 -bottom-4 right-2 w-full h-full bg-zinc-800/50 rounded-2xl border border-white/5 blur-[1px] -rotate-3" />
+        </div>
+    </div>
+);
+
+const CRMRealism = () => (
+    <div className="relative h-full w-full flex items-center justify-center p-2 md:p-4 perspective-[2000px]">
+        {/* 1. Main CRM Database (Back/Center) */}
+        <div className="absolute top-[8%] left-1/2 -translate-x-1/2 w-[90%] md:w-[600px] h-[320px] md:h-[420px] bg-[#0c0c10] rounded-2xl border border-white/10 shadow-2xl z-0 transform rotate-1 opacity-90 scale-95 flex flex-col overflow-hidden">
+            {/* CRM Header */}
+            <div className="h-12 border-b border-white/5 flex items-center justify-between px-4 bg-[#111116]">
+                <div className="flex items-center gap-3">
+                    <div className="p-1.5 bg-blue-500/20 rounded-lg">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full" />
+                    </div>
+                    <div>
+                        <div className="text-[10px] font-bold text-white">CUSTOMER DATABASE</div>
+                        <div className="text-[8px] text-zinc-500">1,204 Active Clients</div>
+                    </div>
+                </div>
+                <div className="flex gap-2">
+                    <div className="w-6 h-6 rounded bg-white/5" />
+                    <div className="w-16 h-6 rounded bg-blue-600/20 border border-blue-600/30 flex items-center justify-center text-[8px] text-blue-400 font-bold">+ NEW</div>
+                </div>
+            </div>
+            {/* Table */}
+            <div className="p-4 overflow-hidden">
+                <div className="flex flex-col gap-2">
+                    {[
+                        { name: "Sofia Rodriguez", role: "Design Agency", status: "VIP", value: "$4,200", last: "2h ago", avatar: "bg-purple-500" },
+                        { name: "Marco Verratti", role: "Freelance", status: "Active", value: "$850", last: "1d ago", avatar: "bg-orange-500" },
+                        { name: "Elena K.", role: "Tech Startups", status: "New", value: "$0", last: "5m ago", avatar: "bg-blue-500" },
+                        { name: "John Doe", role: "Consultant", status: "Churned", value: "$120", last: "30d ago", avatar: "bg-zinc-500" },
+                    ].map((client, i) => (
+                        <div key={i} className="flex items-center justify-between p-2 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+                            <div className="flex items-center gap-3 min-w-[30%]">
+                                <div className={`w-6 h-6 rounded-full ${client.avatar} flex items-center justify-center text-[8px] font-bold text-white`}>{client.name[0]}</div>
+                                <div>
+                                    <div className="text-[9px] font-bold text-white">{client.name}</div>
+                                    <div className="text-[8px] text-zinc-500">{client.role}</div>
+                                </div>
+                            </div>
+                            <div className="hidden md:block">
+                                <span className={`text-[7px] px-1.5 py-0.5 rounded border ${client.status === 'VIP' ? 'bg-purple-500/10 border-purple-500/30 text-purple-300' :
+                                    client.status === 'New' ? 'bg-blue-500/10 border-blue-500/30 text-blue-300' :
+                                        client.status === 'Churned' ? 'bg-red-500/10 border-red-500/30 text-red-300' :
+                                            'bg-green-500/10 border-green-500/30 text-green-300'
+                                    }`}>{client.status}</span>
+                            </div>
+                            <div className="text-[9px] font-mono text-zinc-300">{client.value}</div>
+                            <div className="text-[8px] text-zinc-600">{client.last}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        {/* 2. Mobile Profile (Left) */}
+        <PhoneFrame className="absolute left-[5%] md:left-[12%] top-[15%] h-[320px] md:h-[420px] w-[180px] md:w-[240px] z-20 -rotate-6 hover:rotate-0 transition-transform duration-500 shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
+            <div className="relative h-full flex flex-col bg-zinc-950">
+                {/* Profile Header */}
+                <div className="h-24 bg-gradient-to-b from-blue-900/40 to-black p-4 flex flex-col justify-end">
+                    <div className="flex items-end gap-3 translate-y-4">
+                        <div className="w-14 h-14 rounded-full bg-zinc-900 border-4 border-black flex items-center justify-center">
+                            <div className="w-full h-full rounded-full bg-purple-500 flex items-center justify-center text-lg font-bold text-white">S</div>
+                        </div>
+                        <div className="pb-1">
+                            <div className="text-white text-[12px] font-bold">Sofia Rodriguez</div>
+                            <div className="text-blue-400 text-[9px]">VIP Client</div>
+                        </div>
+                    </div>
+                </div>
+                {/* Actions */}
+                <div className="mt-6 px-4 grid grid-cols-2 gap-2">
+                    <div className="h-8 bg-white/5 rounded-lg flex items-center justify-center gap-1.5 hover:bg-white/10 transition-colors">
+                        <div className="w-3 h-3 bg-green-500/20 rounded-full flex items-center justify-center"><div className="w-1.5 h-1.5 bg-green-500 rounded-full" /></div>
+                        <span className="text-[9px] text-white">Call</span>
+                    </div>
+                    <div className="h-8 bg-blue-600 rounded-lg flex items-center justify-center gap-1.5 hover:bg-blue-500 transition-colors shadow-lg shadow-blue-900/20">
+                        <span className="text-[9px] text-white font-bold">Message</span>
+                    </div>
+                </div>
+                {/* Stats */}
+                <div className="mt-4 px-4 space-y-3">
+                    <div className="p-3 bg-zinc-900/50 border border-white/5 rounded-xl">
+                        <div className="text-[8px] text-zinc-500 uppercase tracking-widest mb-1">Lifetime Value</div>
+                        <div className="text-xl font-bold text-white tracking-tight">$4,200.50</div>
+                    </div>
+                    <div className="space-y-2">
+                        <div className="flex justify-between text-[9px] text-zinc-400">
+                            <span>Last Visit</span>
+                            <span className="text-white">Yesterday</span>
+                        </div>
+                        <div className="flex justify-between text-[9px] text-zinc-400">
+                            <span>Services</span>
+                            <span className="text-white">14 Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </PhoneFrame>
+
+        {/* 3. Chat Interaction (Right) */}
+        <div className="absolute right-[2%] md:right-[15%] bottom-[15%] w-[160px] md:w-[200px] bg-black border border-white/10 rounded-2xl p-2 z-30 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div className="flex items-center gap-2 border-b border-white/5 pb-2 mb-2 px-1">
+                <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.5)]" />
+                <span className="text-[9px] font-mono text-white/50">LIVE CHAT</span>
+            </div>
+            <div className="space-y-2">
+                <div className="self-start bg-zinc-800 rounded-tr-xl rounded-b-xl p-2 max-w-[90%]">
+                    <p className="text-[8px] text-zinc-300 leading-tight">Hola Sofia, confirmamos tu cita para el Viernes a las 10:00? 📅</p>
+                </div>
+                <div className="ml-auto bg-blue-600 rounded-tl-xl rounded-b-xl p-2 max-w-[90%] shadow-lg shadow-blue-900/30">
+                    <p className="text-[8px] text-white leading-tight">¡Sí perfecto! Allí estaré. Gracias 😊</p>
+                </div>
+            </div>
+            <div className="mt-2 text-[8px] text-zinc-600 text-center font-mono">Read 10:42 AM</div>
+        </div>
+    </div>
+);
+
 // --- Updated Content Renderer ---
 
 const ContentRenderer = ({ type }: { type: string }) => {
@@ -633,11 +868,16 @@ const ContentRenderer = ({ type }: { type: string }) => {
     if (type === 'grid_shipping' || type === 'shipping_status') return <GridShippingStatus />;
     if (type === 'grid_ticket' || type === 'orders' || type === 'kitchen' || type === 'reminders' || type === 'invoice' || type === 'grid_fitness' || type === 'incident_report') return <GridTicket />;
 
+    // Realistic Triadic Overrides
+    if (type === 'inventory_triad' || type === 'stock_realism' || type === 'inventory_deep') return <InventoryRealism />;
+    if (type === 'crm_triad' || type === 'client_realism' || type === 'crm_deep') return <CRMRealism />;
+
     // Fallback for any other grid_ or generic text
     if (type.startsWith('grid_')) return <GridList />;
 
     if (type.endsWith('_triad')) return <TriadicComposition type={type} />;
     if (type.startsWith('micro_')) return <MicroCaseComposition />;
+
 
     switch (type) {
         // Scalability
@@ -651,7 +891,7 @@ const ContentRenderer = ({ type }: { type: string }) => {
 
 export const MockupDisplay = ({ type, className }: MockupDisplayProps) => {
     // Determine container aspect ratio based on type
-    const isWide = ['trading', 'system', 'native', 'simple', 'map', 'menu'].includes(type);
+    const isWide = ['trading', 'system', 'native', 'simple', 'map', 'menu', 'stock_realism', 'client_realism', 'inventory_triad', 'crm_triad', 'inventory_deep', 'crm_deep'].includes(type);
 
     return (
         <div className={cn(

@@ -76,17 +76,21 @@ export const Hero = () => {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-20 md:bottom-12 flex flex-col items-center gap-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
+                className="absolute bottom-10 flex flex-col items-center gap-3 z-30 pointer-events-none"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 1 }}
             >
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/70 md:text-white/30">Descubre</span>
+                <div className="flex flex-col items-center gap-1 animate-pulse">
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-white font-semibold drop-shadow-md">Descubre</span>
+                    <span className="h-[1px] w-8 bg-gradient-to-r from-transparent via-white to-transparent opacity-50" />
+                </div>
                 <motion.div
                     animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="p-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                 >
-                    <ChevronDown className="h-6 w-6 text-white/80 md:text-white/30" />
+                    <ChevronDown className="h-5 w-5 text-white drop-shadow-md" />
                 </motion.div>
             </motion.div>
         </section>
